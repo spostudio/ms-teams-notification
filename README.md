@@ -7,7 +7,7 @@ Continues https://github.com/marketplace/actions/microsoft-teams-notification
 Usage:
 ```yaml
 - name: Microsoft Teams Notifications DC
-  uses: dragos-cojocari/ms-teams-notification@v1.0.0
+  uses: dragos-cojocari/ms-teams-notification@v1.0.2
   with:
     github-token: ${{ github.token }} # this will use the runner's token.
     ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
