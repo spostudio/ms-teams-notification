@@ -14,6 +14,7 @@ Usage:
     notification-summary: Your custom notification message 
     notification-color: 17a2b8
     timezone: Europe/Bucharest
+    custom-actions: Alzwin,https://www.alzwin.com,Sentents,https://www.sentents.com
 ```
 
 For more details on syntax and parameteres see https://github.com/jdcargile/ms-teams-notification
