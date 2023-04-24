@@ -9,7 +9,7 @@ export function createMessageCard(
   sha: string,
   repoUrl: string,
   timestamp: string,
-  customActions: {name:string,url:string}[]
+  customActions: {name: string; url: string}[]
 ): any {
   let avatar_url =
     'https://www.gravatar.com/avatar/05b6d8cc7c662bf81e01b39254f88a48?d=identicon'
@@ -55,11 +55,15 @@ export function createMessageCard(
       }
     ]
   }
-  messageCard.potentialAction.unshift( ...customActions.map( i => { return {
-    '@context': 'http://schema.org',
-    target: [ i.url ],
-    '@type': 'ViewAction',
-    name: i.name
-  } }) );
+  messageCard.potentialAction.unshift(
+    ...customActions.map(i => {
+      return {
+        '@context': 'http://schema.org',
+        target: [i.url],
+        '@type': 'ViewAction',
+        name: i.name
+      }
+    })
+  )
   return messageCard
 }
