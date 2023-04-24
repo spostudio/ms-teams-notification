@@ -8,7 +8,8 @@ export function createMessageCard(
   repoName: string,
   sha: string,
   repoUrl: string,
-  timestamp: string
+  timestamp: string,
+  customActions: {name:string,url:string}[]
 ): any {
   let avatar_url =
     'https://www.gravatar.com/avatar/05b6d8cc7c662bf81e01b39254f88a48?d=identicon'
@@ -44,15 +45,21 @@ export function createMessageCard(
         '@context': 'http://schema.org',
         target: [`${repoUrl}/actions/runs/${runId}`],
         '@type': 'ViewAction',
-        name: 'View Workflow Run'
+        name: 'Workflow'
       },
       {
         '@context': 'http://schema.org',
         target: [commit.data.html_url],
         '@type': 'ViewAction',
-        name: 'View Commit Changes'
+        name: 'Changes'
       }
     ]
   }
+  messageCard.potentialAction.unshift( ...customActions.map( i => { return {
+    '@context': 'http://schema.org',
+    target: [ i.url ],
+    '@type': 'ViewAction',
+    name: i.name
+  } }) );
   return messageCard
 }

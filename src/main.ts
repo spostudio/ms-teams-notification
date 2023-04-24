@@ -25,6 +25,11 @@ async function run(): Promise<void> {
       core.getInput('notification-summary') || 'GitHub Action Notification'
     const notificationColor = core.getInput('notification-color') || '0b93ff'
     const timezone = core.getInput('timezone') || 'UTC'
+    const customActionsRaw = core.getInput( 'custom-actions' ).split(',');
+    /** @type {{name:string,url:string}[]} */
+    const customActions = [];
+    for ( let i1 = 0; i1 < customActionsRaw.length / 2; i1++ )
+      customActions.push( { name: customActionsRaw[i1*2], url: customActionsRaw[i1*2+1] } );
 
     const timestamp = moment()
       .tz(timezone)
@@ -52,7 +57,8 @@ async function run(): Promise<void> {
       repoName,
       sha,
       repoUrl,
-      timestamp
+      timestamp,
+      customActions
     )
 
     console.log(messageCard)

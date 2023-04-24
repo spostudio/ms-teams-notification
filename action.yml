@@ -1,6 +1,6 @@
 name: 'Microsoft Teams Notifications DC'
 description: 'Send a custom notification message to a Microsoft Teams channel with GitHub repo details'
-author: 'dragos-cojocari'
+author: 'vincent'
 branding:
   icon: message-circle
   color: purple 
@@ -19,6 +19,9 @@ inputs:
     required: true 
   timezone:
     description: 'Timezone (ex. America/Denver)'
+    required: false
+  custom-actions:
+    description: 'Custom Actions in name1,url1,name2,url2,... form'
     required: false
 runs:
   using: 'node16'
